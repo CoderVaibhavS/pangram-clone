@@ -96,6 +96,31 @@ const carousel_box = (inside) => {
 }
 /**************************************************************************************/
 
+// theme
+let mode = 1
+let root = document.querySelector(':root');
+let light = document.querySelector('.light')
+
+const change_mode = () => {
+    if(mode === 1) {
+        light.innerHTML = 'Dark Mode'
+        root.style.setProperty('--black', 'white');
+        root.style.setProperty('--white', 'black');
+        mode = 0;
+    }
+
+    else{
+        light.innerHTML = 'Light Mode'
+        root.style.setProperty('--white', 'white')
+        root.style.setProperty('--black', 'black')
+        mode = 1;
+    }
+}
+
+document.querySelector('.mode').addEventListener('click', () => change_mode())
+
+/**************************************************************************************/
+
 let slide1_1 = document.querySelector('.carousel-item-1-1');
 let slide1_2 = document.querySelector('.carousel-item-1-2');
 let slide1_3 = document.querySelector('.carousel-item-1-3');
@@ -171,7 +196,7 @@ const parallax = (scrolltop) => {
     document.querySelector('.room-translate-div').style.transform = `translateY(calc(${(-4387 + scrolltop) * 0.07}px - 10%)`;
 
     document.querySelectorAll('.pang-translate-div').forEach(element => {
-        element.style.transform = `translateY(calc(${(-4440 + scrolltop) * 0.07}px - 10%)`;
+        element.style.transform = `translateY(calc(${(-4440 + scrolltop) * 0.05}px - 10%)`;
     })
 
     document.querySelector('.footer-translate').style.transform = `translateY(calc(${(-6710 + scrolltop) * 0.1}px)`;
