@@ -63,7 +63,18 @@ const carousel = (id) => {
     document.querySelectorAll('.bg-img').forEach(element => {element.style.transform = `translateX(${(1-id)*100}%)`;})
     document.querySelectorAll('.carousel-btn').forEach(element => element.classList.remove('carousel-btn-active'));
     document.querySelector(`#carousel-btn${id}`).classList.add('carousel-btn-active')
-    document.querySelector('#carousel-item-2').children.forEach(element => element.classList.add('trans-anim'))
+    let i=1
+    document.querySelectorAll('.carousel-item').forEach((element, i) => {
+        document.querySelectorAll(`.c-${i}`).forEach(ele => {
+            if(i !==id){
+                ele.style.animation = 'downward 2s cubic-bezier(0, 0.52, 0.68, 1.42)';
+            }
+            else{
+                ele.style.animation = 'upward 2s cubic-bezier(0, 0.52, 0.68, 1.42)';
+            }
+        });
+        i++;
+    })
 }
 
 document.querySelector('#carousel-btn1').addEventListener('click', () => carousel(1))
@@ -77,7 +88,6 @@ let box = document.querySelectorAll('.carousel-item-box');
 const carousel_box = (inside) => { 
 
     if(inside === 0) {
-        console.log(1)
         box.forEach(element => {
             element.style.borderColor = 'white';
             element.style.opacity = '0.7';
@@ -86,7 +96,6 @@ const carousel_box = (inside) => {
     }
 
     else {
-        console.log(0)
         box.forEach(element => {
             element.style.borderColor = '#636363';
             element.style.opacity = '1';
@@ -200,7 +209,6 @@ const parallax = (scrolltop) => {
     })
 
     document.querySelector('.footer-translate').style.transform = `translateY(calc(${(-6710 + scrolltop) * 0.1}px)`;
-    console.log(scrolltop)
 }
 
 window.addEventListener("scroll", () => {

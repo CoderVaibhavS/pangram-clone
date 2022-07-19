@@ -286,10 +286,6 @@ a:hover{
     margin-bottom: 5%;
     position: absolute;
     transition: 0.3s;
-    animation: upward .3s cubic-bezier(0, 0.52, 0.68, 1.42);
-}
-
-.trans-anim{
     animation: upward 1s cubic-bezier(0, 0.52, 0.68, 1.42);
 }
 
@@ -388,6 +384,18 @@ a:hover{
     to{
         transform: translateY(0);
         opacity: 1;
+    }
+}
+
+@keyframes downward{
+    from{
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    to{
+        transform: translateY(100%);
+        opacity: 0;
     }
 }
 
